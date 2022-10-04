@@ -12,20 +12,22 @@
 </head>
 <body>
     <div class="container">
+        <div class="weather-app-wrap">
+            <div class="weather-app">
                 <div class="row">
                     <div class="col-8">
-                        <input type="text" placeholder="Search city 🔍">;
-                        <button value="search">Search</button>;
+                        <input type="text" placeholder="Search city 🔍">
+                        <button value="search">Search</button>
                     </div>
                     <div class="col-4">
                         <ul>
-                            <li>
-                                Oct 1
+                            <li id="date">
+                               <strong> Oct 1 </strong>
                             </li>
-                            <li>
+                            <li id="day">
                                 Saturday
                             </li>
-                            <li>
+                            <li id="time">
                                 15:31
                             </li>
                         </ul>
@@ -33,26 +35,26 @@
                 </div>
                 <div class="row">
                     <h1>
-                        MIAMI
+                        <strong>MIAMI</strong>
                     </h1>
                     <div class="col-6">
                         <ul>
-                            <li>
+                            <li id="weatherCondition">
                                 <em>cloudy</em>
                             </li>
-                            <li>
-                                81°F/°C
+                            <li id="temperature">
+                                <strong>81</strong><span id="units">°F/°C</span>
                             </li>
-                            <li>
-                                feels like 87°F/°C
+                            <li id="temperatureFeels">
+                                feels like 87<span id="unitsSmall">°F/°C</span>
                             </li>
-                            <li>
-                                <em>min</em> 78°F/°C, <em>max</em>88°F/°C
+                            <li id="temperatureMin">
+                                <em>min</em> 78<span id="unitsSmall">°F/°C</span> </br><em>max</em> 88<span id="unitsSmall">°F/°C</span>
                             </li>
                         </ul>
                     </div>
                     <div class="col-6">
-                        <div class="icon"> image</div>
+                        <div class="icon"> <img src="src/cloudy.jpg" width="100"/></div>
                         <ul>
                             <li>
                                 Humidity: 79%
@@ -63,10 +65,11 @@
                         </ul>
                     </div>
                 </div>
+            </div>
                 <small>
                     <a href="https://github.com/Viki333221/My-weather-app" target="_blank">Open-source code</a>, by Viktoriia Suvorov
                 </small>
-
+        </div>
     </div>
     <script src="src/app.js"></script>
 </body>
