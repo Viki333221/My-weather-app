@@ -1,4 +1,54 @@
 h1 {
-    color: blue;
-    text-align: center;
+    color: rgb(135, 135, 135);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 46px;
+    line-height: 26px;
+    padding: 1px 100px;
+    text-align: left;
+    margin: 0;
+}
+ul {
+    margin: 0;
+    padding: 0;
+}
+li {
+    color: rgb(135, 135, 135);
+    font-family: Arial, Helvetica, sans-serif;
+    list-style: none;
+    font-size: 16px;
+}
+.weather-app {
+    max-width: 600px;
+    border: lightblue 1px solid;
+    border-radius: 10px;
+    margin: 20px auto;
+    padding: 15px;
+}
+.weather-app-wrap {
+   max-width: 600px;
+}
+li#date {
+    font-size: 24px;
+}
+li#day {
+    font-size: 18px;
+}
+li#time {
+    font-size: 18px;
+}
+li#weatherCondition {
+    font-size: 22px;
+}
+li#temperature {
+    font-size: 46px;
+}
+span#units {
+    font-size: 14px;
+    position: relative;
+    top: -16px;
+}
+span#unitsSmall {
+    font-size: 12px;
+    position: relative;
+    top: -3px;
 }
