@@ -48,7 +48,18 @@ document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed)
 document.querySelector("#icon").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
 
   }
-  currentCity = "Miami"
-  let apiKey = "930a3a9d32117e6afd045c48755b3db9";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&units=imperial`;
-  axios.get(`${apiUrl}&appid=${apiKey}`).then(currentWeather);
+function search(city){
+    let apiKey = "930a3a9d32117e6afd045c48755b3db9";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial`;
+    axios.get(`${apiUrl}&appid=${apiKey}`).then(currentWeather);
+
+}
+
+  function searchCity(event) {
+event.preventDefault();
+search(document.querySelector("#city-input").value)
+  }
+
+  search("Miami")
+
+  document.querySelector("#search-form").addEventListener("submit", searchCity)

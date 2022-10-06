@@ -14,12 +14,21 @@
     <div class="container">
         <div class="weather-app-wrap">
             <div class="weather-app">
+   
                 <div class="row">
-                    <div class="col-8">
-                        <input type="text" placeholder="Search city 🔍">
-                        <button value="search">Search</button>
-                    </div>
-                    <div class="col-4">
+                    <div class="col-9">
+                        <form id="search-form">
+                            <div class="row">
+                                <div class="col-7">
+                                    <input type="search" placeholder="Search a city 🔍" class="form-control" id="city-input" autocomplete="off" />
+                                </div>
+                                <div class="col-5">
+                                    <input type="submit" value="Search" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        </form>
+                   </div>
+                    <div class="col-3">
                         <ul>
                             <li id="date">
                                <strong> Oct 1 </strong>
