@@ -56,6 +56,16 @@ span#unitsSmall {
     top: -3px;
 }
 form{
-    margin-top: 15px;
-    
+    margin-top: 15px;    
+}
+a {
+    text-decoration: none;
+ 
+}
+a.active{
+    color: rgb(135, 135, 135);
+    cursor: default;
+}
+a.active:hover {
+    text-decoration: none;
 }

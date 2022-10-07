@@ -46,7 +46,10 @@ document.querySelector("#temperatureMax").innerHTML = Math.round(response.data.m
 document.querySelector("#humidity").innerHTML = response.data.main.humidity;
 document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);
 document.querySelector("#icon").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
-
+temperatureInFahrenheit = response.data.main.temp;
+temperatureFeelsFahrenheit = response.data.main.feels_like;
+temperatureMaxFahrenheit = response.data.main.temp_max;
+temperatureMinFahrenheit = response.data.main.temp_min;
   }
 function search(city){
     let apiKey = "930a3a9d32117e6afd045c48755b3db9";
@@ -60,6 +63,32 @@ event.preventDefault();
 search(document.querySelector("#city-input").value)
   }
 
+  function temperatureCelsius(event) {
+    event.preventDefault();
+    document.querySelector("#temperature").innerHTML = Math.round((temperatureInFahrenheit - 32) * 5 / 9) 
+    document.querySelector("#temperatureFeels").innerHTML = Math.round((temperatureFeelsFahrenheit - 32) * 5 / 9) 
+    document.querySelector("#temperatureMax").innerHTML = Math.round((temperatureMaxFahrenheit - 32) * 5 / 9) 
+    document.querySelector("#temperatureMin").innerHTML = Math.round((temperatureMinFahrenheit - 32) * 5 / 9) 
+    document.querySelector("#fahrenheit").classList.remove("active")
+    document.querySelector("#celsius").classList.add("active")
+  }
+let temperatureInFahrenheit = null
+
+  function temperatureFahrenheit(event) {
+    event.preventDefault();
+    document.querySelector("#temperature").innerHTML = Math.round(temperatureInFahrenheit);
+    document.querySelector("#temperatureFeels").innerHTML = Math.round(temperatureFeelsFahrenheit);
+    document.querySelector("#temperatureMax").innerHTML = Math.round(temperatureMaxFahrenheit);
+    document.querySelector("#temperatureMin").innerHTML = Math.round(temperatureMinFahrenheit);
+    document.querySelector("#fahrenheit").classList.add("active")
+    document.querySelector("#celsius").classList.remove("active")
+
+  }
+
+
   search("Miami")
 
   document.querySelector("#search-form").addEventListener("submit", searchCity)
+
+  document.querySelector("#celsius").addEventListener("click", temperatureCelsius)
+  document.querySelector("#fahrenheit").addEventListener("click", temperatureFahrenheit)
