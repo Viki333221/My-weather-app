@@ -36,6 +36,33 @@ let months = ["Jan",
   let time = `${hours}:${minutes}`
   document.querySelector("#time").innerHTML = `${time}`
 
+  function showForecast() {
+    let forecastHTML = `<div class="row">`;
+    let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    days.forEach(function (day) {
+    forecastHTML = forecastHTML + `
+                        <div class="col-2">
+                            <div class="forecast-day">
+                                ${day}
+                            </div>
+                            <img src="src/cloudy.jpg" width="30" />
+                            <div class="forecast-temperature">
+                                <span class="temperature-max">
+                                    89
+                                </span>
+                                <span class="temperature-min">
+                                    80
+                                </span>
+                            </div>
+                        </div>
+                    `;
+    })
+    forecastHTML = forecastHTML  + `</div>`
+
+document.querySelector("#forecast").innerHTML = forecastHTML;
+
+  }
+
   function currentWeather(response){
 document.querySelector("h1").innerHTML = response.data.name;
 document.querySelector("#weatherCondition").innerHTML = response.data.weather[0].main;
@@ -88,7 +115,11 @@ let temperatureInFahrenheit = null
 
   search("Miami")
 
+
   document.querySelector("#search-form").addEventListener("submit", searchCity)
 
   document.querySelector("#celsius").addEventListener("click", temperatureCelsius)
   document.querySelector("#fahrenheit").addEventListener("click", temperatureFahrenheit)
+
+
+  showForecast();
