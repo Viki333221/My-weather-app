@@ -36,14 +36,18 @@ let months = ["Jan",
   let time = `${hours}:${minutes}`
   document.querySelector("#time").innerHTML = `${time}`
 
-  function showForecast() {
+  function showForecast(response) {
+    console.log(response.data.daily)
+    let forecast = document.querySelector("#forecast");
+    
+    let daysForecast = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+
     let forecastHTML = `<div class="row">`;
-    let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-    days.forEach(function (day) {
+    daysForecast.forEach(function (dayForecast) {
     forecastHTML = forecastHTML + `
                         <div class="col-2">
                             <div class="forecast-day">
-                                ${day}
+                                ${dayForecast}
                             </div>
                             <img src="src/cloudy.jpg" width="30" />
                             <div class="forecast-temperature">
@@ -57,10 +61,15 @@ let months = ["Jan",
                         </div>
                     `;
     })
-    forecastHTML = forecastHTML  + `</div>`
+    forecastHTML = forecastHTML  + `</div>`;
 
-document.querySelector("#forecast").innerHTML = forecastHTML;
-
+forecast.innerHTML = forecastHTML;
+  }
+  function getForecast(coordinates) {
+    console.log(coordinates);
+    let apiKey = "f8e6a9e3d6fde87cb38868da460b1371";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(showForecast)
   }
 
   function currentWeather(response){
@@ -77,6 +86,7 @@ temperatureInFahrenheit = response.data.main.temp;
 temperatureFeelsFahrenheit = response.data.main.feels_like;
 temperatureMaxFahrenheit = response.data.main.temp_max;
 temperatureMinFahrenheit = response.data.main.temp_min;
+getForecast(response.data.coord)
   }
 function search(city){
     let apiKey = "930a3a9d32117e6afd045c48755b3db9";
@@ -122,4 +132,3 @@ let temperatureInFahrenheit = null
   document.querySelector("#fahrenheit").addEventListener("click", temperatureFahrenheit)
 
 
-  showForecast();
