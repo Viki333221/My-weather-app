@@ -48,7 +48,6 @@ let months = ["Jan",
   function showForecast(response) {
     let forecastData = response.data.daily
     let forecast = document.querySelector("#forecast");
-    
 
     let forecastHTML = `<div class="row">`;
     forecastData.forEach(function (forecastDay, index) {
@@ -60,15 +59,18 @@ let months = ["Jan",
                             </div>
                             <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" width="30" />
                             <div class="forecast-temperature">
-                                <span class="temperature-max">
+                                <span class="temperature-max" id="forecastTempMax">
                                     ${Math.round(forecastDay.temp.max)}°
                                 </span>
-                                <span class="temperature-min">
+                                <span class="temperature-min" id="forecastTempMin">
                                     ${Math.round(forecastDay.temp.min)}°
                                 </span>
                             </div>
                         </div>
                     `;
+    
+    forecastTempMin = forecastDay.temp.min
+    forecastTempMax = forecastDay.temp.max
         }
     })
     forecastHTML = forecastHTML  + `</div>`;
@@ -97,6 +99,7 @@ temperatureInFahrenheit = response.data.main.temp;
 temperatureFeelsFahrenheit = response.data.main.feels_like;
 temperatureMaxFahrenheit = response.data.main.temp_max;
 temperatureMinFahrenheit = response.data.main.temp_min;
+
 getForecast(response.data.coord)
   }
 function search(city){
@@ -117,6 +120,9 @@ search(document.querySelector("#city-input").value)
     document.querySelector("#temperatureFeels").innerHTML = Math.round((temperatureFeelsFahrenheit - 32) * 5 / 9) 
     document.querySelector("#temperatureMax").innerHTML = Math.round((temperatureMaxFahrenheit - 32) * 5 / 9) 
     document.querySelector("#temperatureMin").innerHTML = Math.round((temperatureMinFahrenheit - 32) * 5 / 9) 
+    document.querySelector("#forecastTempMin").innerHTML = Math.round((forecastTempMin - 32) * 5 / 9) 
+    document.querySelector("#forecastTempMax").innerHTML = Math.round((forecastTempMax - 32) * 5 / 9) 
+ 
     document.querySelector("#fahrenheit").classList.remove("active")
     document.querySelector("#celsius").classList.add("active")
   }
@@ -128,6 +134,8 @@ let temperatureInFahrenheit = null
     document.querySelector("#temperatureFeels").innerHTML = Math.round(temperatureFeelsFahrenheit);
     document.querySelector("#temperatureMax").innerHTML = Math.round(temperatureMaxFahrenheit);
     document.querySelector("#temperatureMin").innerHTML = Math.round(temperatureMinFahrenheit);
+    document.querySelector("#forecastTempMin").innerHTML = Math.round(forecastTempMin);
+    document.querySelector("#forecastTempMax").innerHTML = Math.round(forecastTempMax);
     document.querySelector("#fahrenheit").classList.add("active")
     document.querySelector("#celsius").classList.remove("active")
 
