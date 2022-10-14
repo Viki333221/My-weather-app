@@ -95,10 +95,34 @@ document.querySelector("#temperatureMax").innerHTML = Math.round(response.data.m
 document.querySelector("#humidity").innerHTML = response.data.main.humidity;
 document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);
 document.querySelector("#icon").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
+weatherDescription = response.data.weather[0].main
 temperatureInFahrenheit = response.data.main.temp;
 temperatureFeelsFahrenheit = response.data.main.feels_like;
 temperatureMaxFahrenheit = response.data.main.temp_max;
 temperatureMinFahrenheit = response.data.main.temp_min;
+
+
+
+function changeBackgroundImage() {
+    if (weatherDescription === "Clear") {
+      document.querySelector("#weatherApp").style.backgroundImage = `url("https://cdn.pixabay.com/photo/2018/08/06/22/55/sun-3588618__480.jpg")`;
+    } else if (weatherDescription === "Clouds") {
+      document.querySelector("#weatherApp").style.backgroundImage = `url("https://img.freepik.com/premium-photo/vivid-blue-sky-with-white-scattered-clouds_76000-7220.jpg?w=2000")`;
+    } else if (weatherDescription === "Rain") {
+      document.querySelector("#weatherApp").style.backgroundImage = `url("https://us.123rf.com/450wm/lonely11/lonely111207/lonely11120700003/14296128-background-with-rain-and-waves-on-the-drops.jpg?ver=6")`;
+    } else if (weatherDescription === "Thunderstorm") {
+      document.querySelector("#weatherApp").style.backgroundImage = `url("https://1471793142.rsc.cdn77.org/data/images/full/61209/thunderstorm.jpg")`;
+    } else if (weatherDescription === "Snow") {
+      document.querySelector("#weatherApp").style.backgroundImage = `url("https://cdn.wallpapersafari.com/23/47/Tp9dWj.jpg")`;
+    } else if (weatherDescription === "Mist" || "Smoke" || "Haze" || "Dust" || "Fog" || "Sand" || "Ash" || "Tornado" || "Squall") {
+      document.querySelector("#weatherApp").style.backgroundImage = `url("https://media.istockphoto.com/photos/foggy-rural-asphalt-highway-perspective-with-white-line-misty-road-picture-id1055906130?b=1&k=20&m=1055906130&s=170667a&w=0&h=vipk_c3obeBTG0bBLXtz-wJIJHc_e9JHlnRwYsbvOmc=")`;
+    } else if (weatherDescription === "Dizzle") {
+      document.querySelector("#weatherApp").style.backgroundImage = `url("https://png.pngtree.com/thumb_back/fh260/background/20210903/pngtree-rainy-weather-image_795021.jpg")`;
+    } else {
+      document.querySelector("#weatherApp").style.backgroundImage = `url("https://t4.ftcdn.net/jpg/03/11/38/67/360_F_311386731_Zl4dMbUUlQwRI91V8WlXNSKn2mzuY8yx.jpg")`}
+}
+changeBackgroundImage();
+
 
 getForecast(response.data.coord)
   }

@@ -1,5 +1,5 @@
 h1 {
-    color: rgb(135, 135, 135);
+    color: black;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 46px;
     line-height: 26px;
@@ -12,7 +12,7 @@ ul {
     padding: 0;
 }
 li {
-    color: rgb(135, 135, 135);
+    color: black;
     font-family: Arial, Helvetica, sans-serif;
     list-style: none;
     font-size: 16px;
@@ -59,11 +59,10 @@ form{
     margin-top: 15px;    
 }
 a {
-    text-decoration: none;
- 
+    text-decoration: none 
 }
 a.active{
-    color: rgb(135, 135, 135);
+    color: black
     cursor: default;
 }
 a.active:hover {
@@ -71,16 +70,14 @@ a.active:hover {
 }
 .forecast {
     text-align: center;
-    color: rgb(135, 135, 135);
-    margin-top: 20px;
+    padding: 34px 2px;
+    color: black
 }
 .forecast-day{
-font-size: 16px;
-opacity: 0.5;
+font-size: 20px;
+font-weight: bolder;
 }
 .forecast-temperature {
-    font-size: 13px;
-}
-.forecast-temperature-min {
-    opacity: 0.5;
+    font-size: 16px;
+    font-weight: 520;
 }
